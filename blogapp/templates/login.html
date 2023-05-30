@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title> myblog login page </title> 
+{% endblock title %}
+
+{% block content %}
+<div class='container mt-5'>
+{% if messages %}
+{% for msg in messages %}
+<div class="text-white"><b>{{msg}}</b></div>
+{% endfor %}
+{% endif %}
+<h2>Login To Dashboard</h2>
+<form action='' method='POST' novalidate>
+{% csrf_token %}
+
+{{frm.non_field_errors }}
+
+{% for form in frm %}
+<span class='text-size'>{{form.label_tag}} </span> 
+{{form}}  
+<span class="text-warning text-size">{{form.errors | striptags}}</span> 
+<br>
+{% endfor %}
+<input type='submit' value='Login' class='btn btn-success'>
+</form>
+</div>
+{% endblock content %}
+

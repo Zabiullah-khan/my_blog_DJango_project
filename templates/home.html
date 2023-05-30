@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Myblog Home Page </title>
+{% endblock title %}
+
+{% block content %}
+<div class='container mt-5'>
+<h2 id='header'> News Feed<h2>
+{% for dt in data %}
+<div class="jumbotron jumbotron-fluid mt-5">
+  <div class="container">
+  <h5> {{dt.date}}</h5>
+    <h1 class="display-4">{{dt.title}}</h1>
+    <p class="lead"> {{dt.postarea}}</p>
+  </div>
+</div>
+{% endfor %}
+<a href='#home' class='btn btn-light'>Back to Top </a>
+</div>
+{% endblock content %}
+

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>commonuserspage</title>
+{% endblock title %}
+
+{% block content %}
+<div class='container mt-5'>
+<h1>Welcome {{request.user}}</h1>
+{% if messages %}
+{% for msg in messages %}
+<div class="text-white"><b>{{msg}}</b></div>
+{% endfor %}
+{% endif %}
+<a href='{% url "editpass" %}' class='btn btn-warning mt-3'>Change Password</a>
+<a href='{% url "editprof" %}' class='btn btn-success mt-3'>Edit Profile</a>
+
+{% if request.user.is_staff %}
+<a href='{% url "dash" %}' class='btn btn-dark mt-3'>Post Feed</a>
+{% endif %}
+
+</div>
+{% endblock content %}

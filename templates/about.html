@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}
+<title> myblog about page </title>
+{% endblock title %}
+
+{% block content %}
+<div class="about-section mt-5">
+  <h1>About Us</h1>
+  <p>Some text about who we are and what we do.</p>
+  <p>Resize the browser window to see that this page is responsive by the way.</p>
+</div>
+
+<h2 style="text-align:center">Our Team</h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="/w3images/team1.jpg" alt="Myblog" style="width:100%">
+      <div class="container">
+        <h2>Muhammed Zabiullah Khan</h2>
+        <p class="title">CEO & Founder</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>zabiullahkhan@protonmail.com</p>
+        <p><a href='{% url "contact" %}' class="button">Contact</a></p>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

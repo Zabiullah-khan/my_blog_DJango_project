@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>editmemberpage</title>
+{% endblock title %}
+
+{% block content %}
+<div class='container mt-5'>
+<a href='{% url "members" %}' class='btn btn-light mt-3'>Back to Memebers </a>
+<h2 class='mt-3'><span style='color:blue;'>{{data.username}}</span>'s Profile</h2>
+<form action='' method='POST'>
+
+{% if frm.non_field_errors %}
+{% for err in frm.non_field_errors %}
+{{err}}
+{% endfor %}
+{% endif %}
+
+{% csrf_token %}
+{% for form in frm%}
+{{form.label_tag}} {{form}} {{form.errors | striptags}}<br>
+{% endfor %}
+<input type='submit' class='btn btn-success mt-3' value='Update Profile'>
+</form>
+
+</div>
+{% endblock content %}

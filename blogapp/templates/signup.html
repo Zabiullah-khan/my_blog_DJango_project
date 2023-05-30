@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>myblog signup page </title>
+{% endblock title %}
+
+{% block content %}
+<div class='container mt-5'>
+<form action='' method='POST' novalidate>
+<h2>Signup to Myblog </h2>
+{% csrf_token %}
+{% if  frm.non_field_errors %}
+{% for err in frm %}
+{{err}}
+{% endfor %}
+{% endif %}
+
+{% for form in frm %}
+<span class='text-size'>{{form.label_tag}} </span>
+{{form}} 
+<span class='text-warning text-size'>{{form.errors | striptags}}</span>
+<br>
+{% endfor %}
+<input type='submit' class='btn btn-primary'>
+</form>
+</div>
+{% endblock content %}

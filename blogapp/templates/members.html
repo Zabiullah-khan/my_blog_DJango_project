@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>memberspage</title>
+{% endblock title %}
+
+{% block content %}
+<div class='container mt-5'>
+<a href="{% url 'dash' %}" class='btn btn-light'>Back to Dashboard </a><br><br>
+<h2>Members Details </h2>
+<form action='' method='POST'>
+<table class='table'>
+<tr>
+<th>User Name </th>
+<th> First Name</th>
+<th>Last Name </th>
+<th> Email</th>
+<th> Edit</th>
+<th> Delete</th>
+</tr>
+
+{% for form in frm %}
+<tr>
+<td>
+{{form.username}}
+</td>
+<td>
+{{form.first_name}}
+</td>
+<td>
+{{form.last_name}}
+</td>
+<td>
+{{form.email}}
+</td>
+
+<td>
+<form action='{% url "membersedit" form.id %}' method='POST'>
+{% csrf_token %}
+<input type='submit' value='Edit' class='btn btn-warning'>
+</form>
+</td>
+
+<td>
+<a href='{% url "deletemember" form.id %}' class='btn btn-danger'>Delete</a>
+</td>
+</tr>
+{% endfor %}
+</table>
+</form>
+<a href='#home' class='btn btn-light'>Back to Top </a>
+</div>
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title> profileeditpage</title>
+{% endblock title %}
+
+{% block content %}
+<div class='container mt-5'>
+<h2 >Edit Your Profile</h2>
+<form action='' method='POST'>
+{% csrf_token %}
+{% if  frm.non_field_errors %}
+{% for err in frm.non_field_errors %}
+{{err}}
+{% endfor %}
+{% endif %}
+
+{% for form in frm %}
+{{form.label_tag}} {{form}} {{form.errors | striptags }}<br>
+{% endfor %}
+<input type='submit' value='Update profile'  class='btn btn-success'>
+</form>
+<a href='{% url "commonuser" %}' class='btn btn-light mt-2'>Back to Profile</a>
+</div>
+{% endblock content %}
